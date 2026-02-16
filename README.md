@@ -19,6 +19,7 @@ The two components you will be working on are located in the `components` folder
  - The screenshots below are just an example; the number of students and student data will change from semester to semester.
  - The order of students is *not* guaranteed. It will occassionally change. This is okay; your solution does *not* need to preserve the order of students.
  - Each student has an `id` which is guaranteed to be unique.
+ - Use of additional `<h2>` tag is prohibited (except those included in the starter code).
 
 Finally, clicking on an interest to search for it is *not* a requirement of this homework. We will have a different set of requirements instead, like auto-searching, resetting search, and pagination.
 
@@ -26,12 +27,12 @@ Finally, clicking on an interest to search for it is *not* a requirement of this
 
 ### 1. Fetch Student Data
 
-In `Classroom.jsx`, create a React state variable that will hold the array of student data. Then, fetch the student data from `https://cs571api.cs.wisc.edu/rest/s26/hw4/students` *on page load* and save it to this React state variable. Note three things...
+In `Classroom.jsx`, create a React state variable that will hold the array of student data. Then, fetch the student data from `https://cs571api.cs.wisc.edu/rest/s26/hw4/students` *once on page initial load* and save it to this React state variable. Note three things...
  1. You'll likely need to use the React hooks `useEffect` and `useState`.
  2. This is the same data from the HW2 API *except* an additional unique "id" has been added to each student.
  3. This request requires a `X-CS571-ID` header specifying your unique Badger ID.
  
-After fetching this data, `console.log` the contents of this array.
+After fetching this data, `console.log` the contents of this array solely.
 
 **Hint:** Are you getting a [429 HTTP code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) from the server? Check your code for an infinite loop! You will be automatically locked out of the API for up to 1 minute.
 
@@ -45,6 +46,8 @@ In `Classroom.jsx`, display the number of students returned below the search for
 There are NUMBER student(s) matching your search.
 ```
 
+and associate the corresponding element with the id `num-results`.
+
 ![](_figures/step2.png)
 
 ### 3. Displaying Student Names
@@ -57,7 +60,7 @@ Furthermore, make sure to specify a unique `key` for each student; you should us
 
 ### 4. Formatting Student Data
 
-This "works"... but there is a lot of wasted space on large devices. In `Classroom.jsx`, use [React-Bootstrap's grid system](https://react-bootstrap.github.io/layout/grid/) so that...
+This "works"... but there is a lot of wasted space on large devices. In `Classroom.jsx`, use [React-Bootstrap's grid system](https://react-bootstrap.netlify.app/docs/layout/grid/) so that...
  - 1 column of students is shown on `xs` and `sm` devices
  - 2 columns of students is shown on `md` devices
  - 3 columns of students is shown on `lg` devices
@@ -74,6 +77,7 @@ There's more to a student than just their name! Modify `Student.jsx` to display 
  - major
  - number of credits
  - if they are from WI
+ - the number of interests
  - their interests as an **unordered list** (`ul`)
 
 
@@ -106,7 +110,7 @@ I would *encourage you* but not *require you* to use declarative over imperative
 
 ### 7. Reset Search
 
-In `Classroom.jsx`, add an `onClick` handler so that when the user clicks the "Reset Search" button, the search term fields should be cleared and all students should be displayed.
+In `Classroom.jsx`, add an `onClick` handler so that when the user clicks the "Reset Search" (with exactly these characters as the name) button, the search term fields should be cleared and all students should be displayed.
 
 **Important:** The displayed number of results (see Step 2) should also be updated to reflect the total number of students.
 

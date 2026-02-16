@@ -16,8 +16,8 @@ const Classroom = () => {
             <Button variant="neutral">Reset Search</Button>
         </Form>
         <Container fluid>
-            <Row>
-                { /* TODO Students go here! */ }
+            <Row id='students'>
+                { /* TODO Students go here! Leave <Row> id there.*/ }
             </Row>
         </Container>
     </div>
